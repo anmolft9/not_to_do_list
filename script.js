@@ -1,12 +1,22 @@
 // let entryList = [{ task: "tv tv tv", hr: 40 }]; //empty array to hold the obj,, here puttin some default value for convinience
 let entryList = []; //empty array to hold the obj,
 let badList = []; //empty array to hold the obj,
+
+const weeklyHours = 7 * 24; ///total hours spent doing tasks
 const handleOnSubmit = (e) => {
   const formDt = new FormData(e); ///object for manipulation
   const task = formDt.get("task"); //assigning the task
-  const hr = formDt.get("hr"); //assigning the hours
+  const hr = +formDt.get("hr"); //assigning the hours //+ to downcast the string to integer, just like parseInt() function
 
   const obj = { task, hr }; ///creating the object
+  //are we allowed to add new entry
+  const ttlHrs = getTotalHours();
+  //   console.log(ttlHrs);
+
+  if (ttlHrs + hr > weeklyHours) {
+    return alert("Over limit the hours, Cannot add ");
+  }
+
   entryList.push(obj); ///object pushed into array entryList
 
   display(entryList);
@@ -73,7 +83,7 @@ const handleOnDeleteEntryList = (i) => {
 ///delete item from the Bad list
 const handleOnDeleteBadList = (i) => {
   if (!confirm("Are you sure?")) return;
-  const filteredArg = badList.filter((item, index) => index !== i);
+  const filteredArg = badList.filter((item, index) => index !== i); ///index can be written as i
   badList = filteredArg;
 
   badListDisplay(badList); //have to display from the bad list display
@@ -93,4 +103,11 @@ const swtchToEntryList = (i) => {
   entryList.push(itemToBeSwitched[0]);
   display(entryList);
   badListDisplay(badList);
+};
+
+const getTotalHours = () => {
+  let total = 0;
+  const ttlEntrylist = entryList.reduce((acc, item) => acc + item.hr, 0);
+  const ttlBadList = badList.reduce((acc, item) => acc + item.hr, 0);
+  return ttlEntrylist + ttlBadList;
 };
