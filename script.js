@@ -45,6 +45,7 @@ const display = (taskArg) => {
 `;
   });
   document.getElementById("entryList").innerHTML = str;
+  getTotalHours();
 };
 
 //display bad list on the dom
@@ -70,6 +71,8 @@ ${item.task}
 `;
   });
   document.getElementById("badList").innerHTML = str;
+  badTotalHours();
+  //   getTotalHours();
 };
 
 ///delete item from the Entry list
@@ -105,9 +108,19 @@ const swtchToEntryList = (i) => {
   badListDisplay(badList);
 };
 
+////total hours entrylist + badList
 const getTotalHours = () => {
-  let total = 0;
   const ttlEntrylist = entryList.reduce((acc, item) => acc + item.hr, 0);
   const ttlBadList = badList.reduce((acc, item) => acc + item.hr, 0);
-  return ttlEntrylist + ttlBadList;
+  const total = ttlEntrylist + ttlBadList;
+  document.getElementById("totalHours").innerText = total;
+  return;
+};
+
+const badTotalHours = () => {
+  const ttlBadList = badList.reduce((acc, item) => acc + item.hr, 0);
+  // const ttlBadList = badList.reduce((acc, item) => acc + item.hr, 0);
+  // const total = ttlEntrylist + ttlBadList;
+  // document.getElementById("totalHours").innerText = total;
+  document.getElementById("badTtlHrs").innerText = ttlBadList;
 };
