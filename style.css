@@ -3,9 +3,10 @@ body {
   background: linear-gradient(to right, rgb(208, 208, 131), rgb(136, 204, 136));
 }
 
+
 .task-table {
   background: rgb(255, 254, 254);
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.6rem;
   box-shadow: 1rem 1rem 1rem rgba(22, 34, 252, 0.5);
 }
