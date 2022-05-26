@@ -1,8 +1,7 @@
 body {
   min-height: 100vh;
-  background: linear-gradient(to right, rgb(208, 208, 131), rgb(136, 204, 136));
+  background: red;
 }
-
 
 .task-table {
   background: rgb(255, 254, 254);
