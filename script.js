@@ -26,7 +26,7 @@ const handleOnSubmit = (e) => {
 //display entry list on the dom
 const display = (taskArg) => {
   let str = "";
-
+  // the template
   taskArg.map((item, i) => {
     str += `<tr>
   <td>
@@ -117,6 +117,7 @@ const getTotalHours = () => {
   return;
 };
 
+//total hours only on the bad list
 const badTotalHours = () => {
   const ttlBadList = badList.reduce((acc, item) => acc + item.hr, 0);
   // const ttlBadList = badList.reduce((acc, item) => acc + item.hr, 0);
