@@ -71,6 +71,7 @@ const handleOnDeleteBadList = (i) => {
   const filteredArg = badList.filter((item, index) => index !== i);
   badList = filteredArg;
   badListDisplay(badList);
+  totalHours();
 };
 
 const swtchToBadList = (i) => {

@@ -89,7 +89,8 @@ const handleOnDeleteBadList = (i) => {
   const filteredArg = badList.filter((item, index) => index !== i); ///index can be written as i
   badList = filteredArg;
 
-  badListDisplay(badList); //have to display from the bad list display
+  badListDisplay(badList);
+  getTotalHours(); //have to display from the bad list display
 };
 
 //switch items from entry list to bad list
