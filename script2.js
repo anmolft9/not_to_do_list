@@ -1,6 +1,8 @@
 let entryList = [];
 let badList = [];
 
+const limitHours = 24 * 7;
+
 const handleOnSubmit = (e) => {
   const formDt = new FormData(e);
   const task = formDt.get("task");
