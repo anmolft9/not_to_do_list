@@ -1,6 +1,8 @@
 let entryList = [];
 let badList = [];
 
+const weeklyHours = 24 * 7;
+
 const handleOnSubmit = (e) => {
   const formDt = new FormData(e);
 
@@ -9,9 +11,15 @@ const handleOnSubmit = (e) => {
 
   let obj = { task, hr };
 
+  const ttl = totalHours();
+
+  if (ttl + hr > weeklyHours) {
+    return alert("You cannot add more hours");
+  }
+
   entryList.push(obj);
   display(entryList);
-  totalhours();
+  totalHours();
 };
 
 const display = (obj) => {
@@ -78,14 +86,14 @@ const switchToBadList = (i) => {
   badListDisplay(badList);
 };
 
-const totalhours = () => {
+const totalHours = () => {
   const entryHours = entryList.reduce((acc, item) => acc + item.hr, 0);
   const badHours = badList.reduce((acc, item) => acc + item.hr, 0);
 
   const total = entryHours + badHours;
 
   document.getElementById("totalHours").innerText = total;
-  return;
+  return total;
 };
 
 const totalBadHours = () => {
